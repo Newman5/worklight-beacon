@@ -4,7 +4,7 @@
 *A sidequest of [Worklight](https://github.com/your-worklight-link)*
 
 > “Follow the signal. Shine your light.”
-
+![The Beacon Hero Graphic](assets/Beacon-RSS.png)
 ---
 
 ### 📖 Overview
