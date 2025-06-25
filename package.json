@@ -26,6 +26,7 @@
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
+    "@types/chalk": "^0.4.31",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
