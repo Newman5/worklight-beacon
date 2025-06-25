@@ -50,8 +50,18 @@ This project is a foundational step toward building interoperable, decentralized
 
 ### 🧪 Getting Started
 
-> Coming soon — we’ll scaffold this once the repo is initialized.
-
+Install dependencies:
+```bash
+npm install
+```
+Run the CLI:
+```bash
+npx ts-node src/beacon.ts
+```
+Or use:
+```bash
+npm start
+```
 ---
 
 ### 🧠 Inspiration + Influence
