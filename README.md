@@ -9,29 +9,32 @@
 
 ### 📖 Overview
 
-**The Beacon** is a minimal, modern RSS feed reader built as part of the Worklight initiative. It’s designed to help contributors tune into distributed activity across the open web — from blogs to bots, GitHub to WordPress, and beyond.
+**The Beacon** is a minimal, modern RSS feed reader built in TypeScript as part of the Worklight initiative. It reads an OPML file of RSS feed subscriptions, fetches and parses those feeds, and displays a reverse-chronological timeline in the terminal.
 
-By starting with a humble RSS reader, we’re laying the foundation for a future of interoperable presence, visibility, and collaboration tooling.
+This project is a foundational step toward building interoperable, decentralized tools for contributor visibility and network awareness — starting with RSS.
 
 ---
 
 ### 🔦 Why Build This?
 
 - RSS is one of the oldest, most resilient tools of the web.
+- OPML is a universal way to share feed subscriptions (used by Dave Winer and others).
 - Most modern collaboration happens in silos (Discord, Twitter, Slack).
 - We believe contributors deserve a **clearer signal**.
+- Worklight is about **surfacing signals** from contributors, across platforms.
 - The Beacon helps us visualize work across protocols — beginning with RSS.
+- This tool builds familiarity with the infrastructure of the open web.
 
 ---
 
-### 🚧 MVP Features
+### ✅ What It Does (v0.1)
 
-- [ ] Accept a list of RSS feed URLs
-- [ ] Periodically fetch and parse feed entries
-- [ ] Display items in a clean reverse-chronological timeline
-- [ ] Group entries by source, tag, or person
-- [ ] Normalize items into a **Worklight Feed Schema**
-- [ ] Optional: Export feed to JSON or shareable HTML
+- ✅ Reads an `OPML` file (`subscriptions.opml`)
+- ✅ Parses and extracts RSS feed URLs
+- ✅ Fetches and parses each RSS feed (with fallback handling)
+- ✅ Displays the latest posts (with limit per feed)
+- ✅ Normalizes entries to a simple `FeedEntry` format
+- ✅ Handles feeds without titles or metadata gracefully
 
 ---
 
@@ -39,7 +42,8 @@ By starting with a humble RSS reader, we’re laying the foundation for a future
 
 - **Backend**: Node.js (feed fetcher + parser)
 - **Parser**: `rss-parser` or `feedparser`
-- **Frontend**: Astro or React (light UI for displaying the feed)
+- **fast-xml-parser** – for reading OPML
+- **Frontend**: CLI output for now (will add JSON/RSS export + web dashboard later)Astro (light UI for displaying the feed)
 - **Storage**: In-memory or local JSON files (for now)
 
 ---
@@ -69,13 +73,14 @@ By starting with a humble RSS reader, we’re laying the foundation for a future
 
 ### 🫶 Want to Join In?
 
-This is a small, low-barrier project to explore the open web together. If you can:
-- Read RSS
-- Parse XML
-- Tinker with frontend displays
-- Dream about digital tools for community collaboration
+This is a small, low-barrier project to explore the open web together. If you want to:
 
-... then come aboard. 🌟
+- Tinker with RSS and OPML 
+- Learn TypeScript in a real project 
+- Build for the open web, not walled gardens 
+- Visualize contributor activity in cool new ways... 
+
+...then come aboard. 🌊 The Beacon is lit.
 
 ---
 
