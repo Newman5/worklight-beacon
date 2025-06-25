@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Worklight Beacon Subscriptions</title>
+  </head>
+  <body>
+    <outline text="Blogs">
+      <outline text="Scripting News" title="Scripting News" type="rss" xmlUrl="http://scripting.com/rss.xml" htmlUrl="http://scripting.com/" />
+    </outline>
+    <outline text="Tech News">
+      <outline text="Hacker News Frontpage" title="Hacker News" type="rss" xmlUrl="https://hnrss.org/frontpage" htmlUrl="https://news.ycombinator.com/" />
+    </outline>
+  </body>
+</opml>
+

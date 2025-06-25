@@ -1,0 +1,32 @@
+{
+  "name": "worklight-beacon",
+  "version": "1.0.0",
+  "description": "*A sidequest of [Worklight](https://github.com/your-worklight-link)*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/beacon.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Newman5/worklight-beacon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Newman5/worklight-beacon/issues"
+  },
+  "homepage": "https://github.com/Newman5/worklight-beacon#readme",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "dayjs": "^1.11.13",
+    "fast-xml-parser": "^5.2.5",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
