@@ -5,7 +5,10 @@
   </head>
   <body>
     <outline text="Blogs">
-      <outline text="Scripting News" title="Scripting News" type="rss" xmlUrl="http://scripting.com/rss.xml" htmlUrl="http://scripting.com/" />
+      <!-- <outline text="Scripting News" title="Scripting News" type="rss" xmlUrl="http://scripting.com/rss.xml" htmlUrl="http://scripting.com/" /> -->
+      <outline text="Newman" title="newman" type="rss"
+         xmlUrl="http://data.feedland.org/feeds/newman.xml"
+         htmlUrl="https://feedland.org/?river=http%3A%2F%2Fdata.feedland.org%2Ffeeds%2Fnewman.xml" />
     </outline>
     <outline text="Tech News">
       <outline text="Hacker News Frontpage" title="Hacker News" type="rss" xmlUrl="https://hnrss.org/frontpage" htmlUrl="https://news.ycombinator.com/" />
@@ -13,3 +16,4 @@
   </body>
 </opml>
 
+"feedUrl": "http://data.feedland.org/feeds/newman.xml",

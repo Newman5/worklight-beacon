@@ -18,3 +18,4 @@ for (const entry of latest) {
 }
 
 main();
+console.log(`📡 Found some entries. bye...\n`);
