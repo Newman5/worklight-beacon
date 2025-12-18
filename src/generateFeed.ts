@@ -2,16 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { Post } from './types';
 import { loadPosts } from './writePost';
+import { loadConfig } from './config';
 
 const OUTPUT_DIR = 'output';
 const FEED_PATH = path.join(OUTPUT_DIR, 'feed.rss');
-
-// Feed configuration - could be moved to config file later
-const FEED_CONFIG = {
-  title: 'My Beacon Feed',
-  link: 'https://example.com/feed.rss',
-  description: 'Signal from The Beacon',
-};
 
 function escapeXml(text: string): string {
   return text
@@ -27,9 +21,9 @@ function formatRssDate(isoDate: string): string {
   return date.toUTCString();
 }
 
-function generateRssItem(post: Post): string {
-  const guid = post.guid || post.link || `post:${post.id}`;
-  const link = post.link || `https://example.com/posts/${post.id}.html`;
+function generateRssItem(post: Post, baseUrl: string): string {
+  const guid = post.guid || post.link || `${baseUrl}/posts/${post.id}.html`;
+  const link = post.link || `${baseUrl}/posts/${post.id}.html`;
 
   let description = escapeXml(post.content);
 
@@ -51,16 +45,17 @@ function generateRssItem(post: Post): string {
 }
 
 export function generateRssFeed(posts: Post[]): string {
+  const config = loadConfig();
   const now = new Date().toUTCString();
 
-  const items = posts.map(generateRssItem).join('\n');
+  const items = posts.map((post) => generateRssItem(post, config.site.baseUrl)).join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${escapeXml(FEED_CONFIG.title)}</title>
-    <link>${escapeXml(FEED_CONFIG.link)}</link>
-    <description>${escapeXml(FEED_CONFIG.description)}</description>
+    <title>${escapeXml(config.feed.title)}</title>
+    <link>${escapeXml(config.feed.link)}</link>
+    <description>${escapeXml(config.feed.description)}</description>
     <lastBuildDate>${now}</lastBuildDate>
 ${items}
   </channel>

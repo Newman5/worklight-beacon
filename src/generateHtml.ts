@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Post } from './types';
 import { loadPosts } from './writePost';
+import { loadConfig } from './config';
 
 const OUTPUT_DIR = path.join('output', 'posts');
 

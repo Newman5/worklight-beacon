@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
 import { Post } from './types';
+import { loadConfig } from './config';
 
 const POSTS_DIR = 'posts';
 
@@ -62,16 +63,18 @@ export async function createPost(): Promise<Post> {
     ? await prompt('Source title (optional): ')
     : '';
 
+  const config = loadConfig();
   const id = generateId(title);
   const date = new Date().toISOString();
+  const postUrl = `${config.site.baseUrl}/posts/${id}.html`;
 
   const post: Post = {
     id,
     title,
     date,
     content,
-    link: `https://example.com/posts/${id}.html`,
-    guid: `https://example.com/posts/${id}.html`,
+    link: postUrl,
+    guid: postUrl,
   };
 
   if (sourceUrl) {
@@ -103,10 +106,16 @@ export function loadPosts(): Post[] {
   const posts: Post[] = [];
 
   for (const file of files) {
-    const filepath = path.join(POSTS_DIR, file);
-    const content = fs.readFileSync(filepath, 'utf-8');
-    const post: Post = JSON.parse(content);
-    posts.push(post);
+    try {
+      const filepath = path.join(POSTS_DIR, file);
+      const content = fs.readFileSync(filepath, 'utf-8');
+      const post: Post = JSON.parse(content);
+      posts.push(post);
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error(String(error));
+      console.error(`⚠️  Warning: Failed to load ${file}: ${err.message}`);
+      // Continue loading other posts even if one fails
+    }
   }
 
   // Sort by date, newest first

@@ -70,6 +70,22 @@ Install dependencies:
 npm install
 ```
 
+#### Configure Your Feed (Important!)
+Before creating posts, update `src/config.ts` to replace `example.com` with your actual domain:
+
+```typescript
+export const DEFAULT_CONFIG: BeaconConfig = {
+  feed: {
+    title: 'My Beacon Feed',           // Your feed name
+    link: 'https://yourdomain.com/feed.rss',  // Your feed URL
+    description: 'Signal from The Beacon',     // Feed description
+  },
+  site: {
+    baseUrl: 'https://yourdomain.com',  // Your website URL
+  },
+};
+```
+
 #### Read RSS Feeds
 Run the CLI to read your subscribed feeds:
 ```bash

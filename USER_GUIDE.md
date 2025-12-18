@@ -121,17 +121,27 @@ These can be:
 
 ### Customizing Feed Metadata
 
-Currently, feed metadata is in `src/generateFeed.ts`:
+Edit `src/config.ts` to customize your feed's metadata:
 
 ```typescript
-const FEED_CONFIG = {
-  title: 'My Beacon Feed',
-  link: 'https://example.com/feed.rss',
-  description: 'Signal from The Beacon',
+export const DEFAULT_CONFIG: BeaconConfig = {
+  feed: {
+    title: 'My Beacon Feed',
+    link: 'https://yourdomain.com/feed.rss',
+    description: 'Signal from The Beacon',
+  },
+  site: {
+    baseUrl: 'https://yourdomain.com',
+  },
 };
 ```
 
-Edit these values to customize your feed's metadata.
+Replace `example.com` with your actual domain. This ensures:
+- RSS feed has correct URLs
+- Post links point to your site
+- Feed metadata is accurate
+
+**Important:** Update these values before publishing your feed!
 
 ## Workflow Examples
 
