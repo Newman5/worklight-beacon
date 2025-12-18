@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>My Beacon Feed</title>
+    <link>https://example.com/feed.rss</link>
+    <description>Signal from The Beacon</description>
+    <lastBuildDate>Thu, 18 Dec 2025 04:42:13 GMT</lastBuildDate>
+    <item>
+      <title>Interesting Article on RSS Revival</title>
+      <link>https://example.com/posts/2025-06-26-sharing-a-link.html</link>
+      <guid>https://example.com/posts/2025-06-26-sharing-a-link.html</guid>
+      <pubDate>Thu, 26 Jun 2025 14:15:00 GMT</pubDate>
+      <description><![CDATA[Just found this great piece about how RSS is making a comeback. The author makes compelling points about ownership and durability in the age of platform decay.
+
+→ In response to: The RSS Renaissance (https://techblog.example/rss-renaissance)]]></description>
+    </item>
+    <item>
+      <title>My First Beacon Post</title>
+      <link>https://example.com/posts/2025-06-25-my-first-beacon-post.html</link>
+      <guid>https://example.com/posts/2025-06-25-my-first-beacon-post.html</guid>
+      <pubDate>Wed, 25 Jun 2025 10:30:00 GMT</pubDate>
+      <description><![CDATA[This is my first post from The Beacon!
+
+I&apos;ve been reading a lot about RSS and the open web lately. It&apos;s fascinating how durable and simple RSS remains after all these years.
+
+This tool helps me not just consume feeds, but also contribute to the RSS ecosystem by emitting my own signal.
+
+→ In response to: The Article That Inspired Me (https://example.com/inspiration)]]></description>
+    </item>
+  </channel>
+</rss>

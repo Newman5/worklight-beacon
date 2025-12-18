@@ -9,7 +9,10 @@
 
 ### 📖 Overview
 
-**The Beacon** is a minimal, modern RSS feed reader built in TypeScript as part of the Worklight initiative. It reads an OPML file of RSS feed subscriptions, fetches and parses those feeds, and displays a reverse-chronological timeline in the terminal.
+**The Beacon** is a minimal, modern RSS feed reader **and writer** built in TypeScript as part of the Worklight initiative. It completes the RSS loop: read feeds from others, write your own posts, and emit your signal back into the RSS ecosystem.
+
+**Read:** Fetch and display RSS feeds from an OPML subscription list  
+**Write:** Create posts that generate your own RSS feed
 
 This project is a foundational step toward building interoperable, decentralized tools for contributor visibility and network awareness — starting with RSS.
 
@@ -27,8 +30,9 @@ This project is a foundational step toward building interoperable, decentralized
 
 ---
 
-### ✅ What It Does (v0.1)
+### ✅ What It Does
 
+#### Read Mode (v0.1)
 - ✅ Reads an `OPML` file (`subscriptions.opml`)
 - ✅ Parses and extracts RSS feed URLs
 - ✅ Fetches and parses each RSS feed (with fallback handling)
@@ -36,15 +40,25 @@ This project is a foundational step toward building interoperable, decentralized
 - ✅ Normalizes entries to a simple `FeedEntry` format
 - ✅ Handles feeds without titles or metadata gracefully
 
+#### Write Mode (v1.0) ✨ NEW
+- ✅ Create new posts via CLI
+- ✅ Store posts as individual JSON files (`posts/`)
+- ✅ Generate RSS 2.0 feed from your posts (`output/feed.rss`)
+- ✅ Optional source URL linking (reference articles you're responding to)
+- ✅ File-based: no database, just files
+- ✅ Durable: posts are plain JSON, easy to version control
+
 ---
 
-### 🧱 Tech Stack (tentative)
+### 🧱 Tech Stack
 
-- **Backend**: Node.js (feed fetcher + parser)
-- **Parser**: `rss-parser` or `feedparser`
-- **fast-xml-parser** – for reading OPML
-- **Frontend**: CLI output for now (will add JSON/RSS export + web dashboard later)Astro (light UI for displaying the feed)
-- **Storage**: In-memory or local JSON files (for now)
+- **Runtime**: Node.js + TypeScript
+- **RSS Reading**: `rss-parser`
+- **OPML Parsing**: `fast-xml-parser`
+- **RSS Writing**: Custom RSS 2.0 generator
+- **CLI**: Built-in Node.js readline
+- **Storage**: Local JSON files (no database)
+- **Output**: RSS 2.0 XML
 
 ---
 
@@ -54,14 +68,71 @@ Install dependencies:
 ```bash
 npm install
 ```
-Run the CLI:
-```bash
-npx ts-node src/beacon.ts
-```
-Or use:
+
+#### Read RSS Feeds
+Run the CLI to read your subscribed feeds:
 ```bash
 npm start
 ```
+
+#### Write a Post
+Create a new post interactively:
+```bash
+npm run write
+```
+
+You'll be prompted for:
+- **Title**: Your post title
+- **Content**: Either type directly or provide a path to a text file
+- **Source URL** (optional): URL you're responding to or referencing
+- **Source Title** (optional): Title of the source
+
+The post will be saved to `posts/` and your RSS feed will be regenerated at `output/feed.rss`.
+
+#### Rebuild RSS Feed
+If you manually edit post files, regenerate the RSS feed:
+```bash
+npm run build-feed
+```
+
+#### File Structure
+```
+worklight-beacon/
+├── subscriptions.opml     # Feeds you follow (read)
+├── posts/                 # Posts you write
+│   ├── YYYY-MM-DD-slug.json
+│   └── ...
+└── output/
+    └── feed.rss          # Your generated RSS feed
+```
+---
+
+### 🎯 Design Philosophy
+
+**Beacon completes the RSS loop:** read signal, emit signal.
+
+#### What Beacon IS:
+- ✅ A tool for reading and writing RSS
+- ✅ File-based and durable
+- ✅ Minimal and transparent
+- ✅ Local-first (your files, your control)
+
+#### What Beacon is NOT:
+- ❌ Not a CMS or blog platform
+- ❌ Not a social network
+- ❌ Not a database-driven app
+- ❌ Not a rich text editor
+- ❌ Not an admin dashboard
+- ❌ Not a plugin system
+
+**Core Values:**
+- **Files are truth** – JSON posts, RSS output, no hidden state
+- **RSS-first** – Standard RSS 2.0, works with any reader
+- **Boring tech** – No frameworks, no complex builds, just Node + TypeScript
+- **Ownership** – You own your posts, your feed, your signal
+
+See [DESIGN_WRITE_MODE.md](DESIGN_WRITE_MODE.md) for detailed design documentation.
+
 ---
 
 ### 🧠 Inspiration + Influence
