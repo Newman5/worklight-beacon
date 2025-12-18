@@ -142,6 +142,8 @@ worklight-beacon/
 
 5. **Share your feed** with others or host the HTML pages
 
+**For detailed instructions, see [USER_GUIDE.md](USER_GUIDE.md)**
+
 ---
 
 ### 🎯 Design Philosophy
