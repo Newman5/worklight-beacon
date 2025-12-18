@@ -1,0 +1,11 @@
+{
+  "feed": {
+    "title": "My Beacon Feed",
+    "link": "https://example.com/feed.rss",
+    "description": "Signal from The Beacon",
+    "author": "Your Name"
+  },
+  "site": {
+    "baseUrl": "https://example.com"
+  }
+}

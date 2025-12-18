@@ -1,0 +1,10 @@
+{
+  "id": "2025-06-25-my-first-beacon-post",
+  "title": "My First Beacon Post",
+  "date": "2025-06-25T10:30:00.000Z",
+  "content": "This is my first post from The Beacon!\n\nI've been reading a lot about RSS and the open web lately. It's fascinating how durable and simple RSS remains after all these years.\n\nThis tool helps me not just consume feeds, but also contribute to the RSS ecosystem by emitting my own signal.",
+  "link": "https://example.com/posts/2025-06-25-my-first-beacon-post.html",
+  "guid": "https://example.com/posts/2025-06-25-my-first-beacon-post.html",
+  "sourceUrl": "https://example.com/inspiration",
+  "sourceTitle": "The Article That Inspired Me"
+}

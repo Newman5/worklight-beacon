@@ -13,7 +13,13 @@
     <outline text="Tech News">
       <outline text="Hacker News Frontpage" title="Hacker News" type="rss" xmlUrl="https://hnrss.org/frontpage" htmlUrl="https://news.ycombinator.com/" />
     </outline>
+        
+    <outline text="Blogs">
+      <outline text="Saved For Later" title="Saved For Later" type="rss"
+         xmlUrl="https://savedforlater.dev/rss"
+         htmlUrl="https://savedforlater.dev/" />
+    </outline>
   </body>
 </opml>
 
-"feedUrl": "http://data.feedland.org/feeds/newman.xml",
+

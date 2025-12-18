@@ -1,11 +1,13 @@
 {
   "name": "worklight-beacon",
   "version": "1.0.0",
-  "description": "*A sidequest of [Worklight](https://github.com/your-worklight-link)*",
+  "description": "An RSS reader and writer for the open web - read signal, emit signal",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/beacon.ts"
+    "start": "ts-node src/beacon.ts",
+    "write": "ts-node src/write.ts",
+    "build-feed": "ts-node src/build.ts"
   },
   "repository": {
     "type": "git",

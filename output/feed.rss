@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>My Beacon Feed</title>
+    <link>https://example.com/feed.rss</link>
+    <description>Signal from The Beacon</description>
+    <lastBuildDate>Thu, 18 Dec 2025 18:10:47 GMT</lastBuildDate>
+    <item>
+      <title>Post Formatting Demo</title>
+      <link>https://example.com/posts/2025-12-18-formatting-demo.html</link>
+      <guid>https://example.com/posts/2025-12-18-formatting-demo.html</guid>
+      <pubDate>Thu, 18 Dec 2025 18:00:00 GMT</pubDate>
+      <description><![CDATA[This post demonstrates various formatting options.
+
+You can include &lt;strong&gt;bold text&lt;/strong&gt; and &lt;em&gt;italic text&lt;/em&gt;.
+
+Here&apos;s a link: &lt;a href=&quot;https://example.com/article&quot;&gt;Check out this article&lt;/a&gt;
+
+And here&apos;s an image:
+
+&lt;img src=&quot;https://via.placeholder.com/400x200/FFA500/FFFFFF?text=Beacon+Demo&quot; alt=&quot;Demo image&quot;&gt;
+
+You can also include plain URLs: https://github.com/Newman5/worklight-beacon]]></description>
+    </item>
+    <item>
+      <title>Hello World Beacon Post</title>
+      <link>https://example.com/posts/2025-12-18-hello-world-beacon-post.html</link>
+      <guid>https://example.com/posts/2025-12-18-hello-world-beacon-post.html</guid>
+      <pubDate>Thu, 18 Dec 2025 17:57:48 GMT</pubDate>
+      <description><![CDATA[This is just the content.  Which is &quot;Hello World&quot;.  And, i do see the option for a text file link here.  nice.
+
+→ In response to: Uncle Dave Scripting.com (http://scripting.com)]]></description>
+    </item>
+    <item>
+      <title>Interesting Article on RSS Revival</title>
+      <link>https://example.com/posts/2025-06-26-sharing-a-link.html</link>
+      <guid>https://example.com/posts/2025-06-26-sharing-a-link.html</guid>
+      <pubDate>Thu, 26 Jun 2025 14:15:00 GMT</pubDate>
+      <description><![CDATA[Just found this great piece about how RSS is making a comeback. The author makes compelling points about ownership and durability in the age of platform decay.
+
+→ In response to: The RSS Renaissance (https://techblog.example/rss-renaissance)]]></description>
+    </item>
+    <item>
+      <title>My First Beacon Post</title>
+      <link>https://example.com/posts/2025-06-25-my-first-beacon-post.html</link>
+      <guid>https://example.com/posts/2025-06-25-my-first-beacon-post.html</guid>
+      <pubDate>Wed, 25 Jun 2025 10:30:00 GMT</pubDate>
+      <description><![CDATA[This is my first post from The Beacon!
+
+I&apos;ve been reading a lot about RSS and the open web lately. It&apos;s fascinating how durable and simple RSS remains after all these years.
+
+This tool helps me not just consume feeds, but also contribute to the RSS ecosystem by emitting my own signal.
+
+→ In response to: The Article That Inspired Me (https://example.com/inspiration)]]></description>
+    </item>
+  </channel>
+</rss>
