@@ -4,7 +4,16 @@
     <title>My Beacon Feed</title>
     <link>https://example.com/feed.rss</link>
     <description>Signal from The Beacon</description>
-    <lastBuildDate>Thu, 18 Dec 2025 04:50:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Dec 2025 17:57:48 GMT</lastBuildDate>
+    <item>
+      <title>Hello World Beacon Post</title>
+      <link>https://example.com/posts/2025-12-18-hello-world-beacon-post.html</link>
+      <guid>https://example.com/posts/2025-12-18-hello-world-beacon-post.html</guid>
+      <pubDate>Thu, 18 Dec 2025 17:57:48 GMT</pubDate>
+      <description><![CDATA[This is just the content.  Which is &quot;Hello World&quot;.  And, i do see the option for a text file link here.  nice.
+
+→ In response to: Uncle Dave Scripting.com (http://scripting.com)]]></description>
+    </item>
     <item>
       <title>Interesting Article on RSS Revival</title>
       <link>https://example.com/posts/2025-06-26-sharing-a-link.html</link>
