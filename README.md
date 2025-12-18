@@ -1,6 +1,8 @@
 
 # 🧡 The Beacon  
+
 ## An RSS Reader for the Open Web Renaissance  
+
 *A sidequest of [Worklight](https://github.com/your-worklight-link)*
 
 > “Follow the signal. Shine your light.”
@@ -33,6 +35,7 @@ This project is a foundational step toward building interoperable, decentralized
 ### ✅ What It Does
 
 #### Read Mode (v0.1)
+
 - ✅ Reads an `OPML` file (`subscriptions.opml`)
 - ✅ Parses and extracts RSS feed URLs
 - ✅ Fetches and parses each RSS feed (with fallback handling)
@@ -41,6 +44,7 @@ This project is a foundational step toward building interoperable, decentralized
 - ✅ Handles feeds without titles or metadata gracefully
 
 #### Write Mode (v1.0) ✨ NEW
+
 - ✅ Create new posts via CLI
 - ✅ Store posts as individual JSON files (`posts/`)
 - ✅ Generate RSS 2.0 feed from your posts (`output/feed.rss`)
@@ -68,11 +72,13 @@ This project is a foundational step toward building interoperable, decentralized
 ### 🧪 Getting Started
 
 Install dependencies:
+
 ```bash
 npm install
 ```
 
 #### Configure Your Feed (Important!)
+
 Before creating posts, update `src/config.ts` to replace `example.com` with your actual domain:
 
 ```typescript
@@ -89,18 +95,23 @@ export const DEFAULT_CONFIG: BeaconConfig = {
 ```
 
 #### Read RSS Feeds
+
 Run the CLI to read your subscribed feeds:
+
 ```bash
 npm start
 ```
 
 #### Write a Post
+
 Create a new post interactively:
+
 ```bash
 npm run write
 ```
 
 You'll be prompted for:
+
 - **Title**: Your post title
 - **Content**: Either type directly or provide a path to a text file
 - **Source URL** (optional): URL you're responding to or referencing
@@ -109,7 +120,9 @@ You'll be prompted for:
 The post will be saved to `posts/` and your RSS feed will be regenerated at `output/feed.rss`. HTML pages are also generated at `output/posts/`.
 
 #### Rebuild RSS Feed and HTML
+
 If you manually edit post files, regenerate all outputs:
+
 ```bash
 npm run build-feed
 ```
@@ -117,6 +130,7 @@ npm run build-feed
 This will regenerate both the RSS feed and HTML pages.
 
 #### File Structure
+
 ```
 worklight-beacon/
 ├── subscriptions.opml     # Feeds you follow (read)
@@ -129,11 +143,13 @@ worklight-beacon/
         ├── YYYY-MM-DD-slug.html
         └── ...
 ```
+
 ---
 
 ### 📝 Example Workflow
 
 1. **Read feeds** to discover interesting content:
+
    ```bash
    npm start
    ```
@@ -141,11 +157,13 @@ worklight-beacon/
 2. **Find something worth responding to** in the terminal output
 
 3. **Write a post** referencing that content:
+
    ```bash
    npm run write
    ```
-   
+
    Example:
+
    ```
    Title: Thoughts on the RSS Revival
    Content: I agree with the points made about RSS durability...
@@ -167,6 +185,7 @@ worklight-beacon/
 To publish your feed for free on GitHub Pages:
 
 1. **Copy outputs to docs directory:**
+
    ```bash
    mkdir -p docs
    cp output/feed.rss docs/
@@ -174,6 +193,7 @@ To publish your feed for free on GitHub Pages:
    ```
 
 2. **Update config** in `src/config.ts` with your GitHub Pages URL:
+
    ```typescript
    baseUrl: 'https://username.github.io/repo-name',
    ```
@@ -190,13 +210,15 @@ See [USER_GUIDE.md](USER_GUIDE.md#hosting-on-github-pages) for detailed GitHub P
 
 **Beacon completes the RSS loop:** read signal, emit signal.
 
-#### What Beacon IS:
+#### What Beacon IS
+
 - ✅ A tool for reading and writing RSS
 - ✅ File-based and durable
 - ✅ Minimal and transparent
 - ✅ Local-first (your files, your control)
 
-#### What Beacon is NOT:
+#### What Beacon is NOT
+
 - ❌ Not a CMS or blog platform
 - ❌ Not a social network
 - ❌ Not a database-driven app
@@ -205,6 +227,7 @@ See [USER_GUIDE.md](USER_GUIDE.md#hosting-on-github-pages) for detailed GitHub P
 - ❌ Not a plugin system
 
 **Core Values:**
+
 - **Files are truth** – JSON posts, RSS output, no hidden state
 - **RSS-first** – Standard RSS 2.0, works with any reader
 - **Boring tech** – No frameworks, no complex builds, just Node + TypeScript
@@ -235,10 +258,10 @@ See [DESIGN_WRITE_MODE.md](DESIGN_WRITE_MODE.md) for detailed design documentati
 
 This is a small, low-barrier project to explore the open web together. If you want to:
 
-- Tinker with RSS and OPML 
-- Learn TypeScript in a real project 
-- Build for the open web, not walled gardens 
-- Visualize contributor activity in cool new ways... 
+- Tinker with RSS and OPML
+- Learn TypeScript in a real project
+- Build for the open web, not walled gardens
+- Visualize contributor activity in cool new ways...
 
 ...then come aboard. 🌊 The Beacon is lit.
 
@@ -247,5 +270,3 @@ This is a small, low-barrier project to explore the open web together. If you wa
 ### License
 
 MIT — Open to all.
-
-

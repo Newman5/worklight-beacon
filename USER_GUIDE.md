@@ -5,6 +5,7 @@
 ### Creating Your First Post
 
 1. Run the write command:
+
    ```bash
    npm run write
    ```
@@ -42,20 +43,24 @@ Instead of typing content directly, you can write in your favorite editor:
 To include links in your post content, use plain URLs or simple markdown-style syntax:
 
 **Plain URLs:** Just paste the URL in your content:
+
 ```
 Check out this article: https://example.com/article
 ```
 
 **Markdown-style links:** Use `[text](url)` format in your content:
+
 ```
 I found [this great article](https://example.com/article) about RSS.
 ```
 
 Note: The HTML generator currently preserves these as plain text. If you need clickable links, you can:
+
 1. Edit the JSON file and use HTML `<a>` tags in the content field
 2. Manually edit the generated HTML in `output/posts/`
 
 **Example with inline link:**
+
 ```json
 {
   "content": "Check out <a href=\"https://example.com\">this article</a> for more."
@@ -68,6 +73,7 @@ Images are not stored in posts directly. To include images:
 
 1. **Host images externally** (GitHub, Imgur, your server)
 2. **Reference in content** using HTML `<img>` tags:
+
    ```json
    {
      "content": "Here's a screenshot:\n\n<img src=\"https://example.com/image.png\" alt=\"Description\">\n\nWhat do you think?"
@@ -82,11 +88,13 @@ Images are not stored in posts directly. To include images:
 #### Content Formatting
 
 The `content` field accepts:
+
 - **Plain text** - Safest, works everywhere
 - **HTML tags** - For links (`<a>`), images (`<img>`), emphasis (`<em>`, `<strong>`)
 - **Line breaks** - Use `\n` for single break, `\n\n` for paragraphs
 
 **Example with formatting:**
+
 ```json
 {
   "content": "This is <strong>important</strong> text.\n\nThis is a new paragraph with a <a href=\"https://example.com\">link</a>.\n\n<img src=\"https://example.com/pic.jpg\" alt=\"Photo\">"
@@ -103,12 +111,14 @@ When you reference another article or post:
 4. Your post will include a citation linking back to the source
 
 Example:
+
 ```
 Source URL: https://example.com/rss-article
 Source Title: The Future of RSS
 ```
 
 This appears in both RSS and HTML as:
+
 ```
 → In response to: The Future of RSS (https://example.com/rss-article)
 ```
@@ -123,6 +133,7 @@ Posts are just JSON files. You can edit them directly:
 2. Edit the content, title, or metadata
 3. Save the file
 4. Regenerate outputs:
+
    ```bash
    npm run build-feed
    ```
@@ -143,12 +154,14 @@ Posts are just JSON files. You can edit them directly:
 ```
 
 **Required fields:**
+
 - `id` - unique identifier (filename-safe)
 - `title` - post title
 - `date` - ISO 8601 timestamp
 - `content` - post body
 
 **Optional fields:**
+
 - `link` - canonical URL (defaults to generated HTML path)
 - `guid` - RSS guid (defaults to link)
 - `sourceUrl` - URL you're referencing
@@ -161,6 +174,7 @@ Posts are just JSON files. You can edit them directly:
 Your RSS feed is at: `output/feed.rss`
 
 You can:
+
 - Copy it to a web server
 - Commit it to a GitHub Pages site
 - Share the URL with RSS readers
@@ -170,6 +184,7 @@ You can:
 Static HTML pages are in: `output/posts/`
 
 These can be:
+
 - Hosted on any static site host
 - Committed to GitHub Pages
 - Shared directly
@@ -182,17 +197,20 @@ GitHub Pages is a free way to host your Beacon feed and posts. Here's a detailed
 #### Option 1: Using the docs/ Directory (Recommended)
 
 1. **Create a docs directory** in your repository root:
+
    ```bash
    mkdir docs
    ```
 
 2. **Copy your outputs to docs:**
+
    ```bash
    cp output/feed.rss docs/
    cp -r output/posts docs/
    ```
 
 3. **Update your config** in `src/config.ts` to match your GitHub Pages URL:
+
    ```typescript
    export const DEFAULT_CONFIG: BeaconConfig = {
      feed: {
@@ -207,6 +225,7 @@ GitHub Pages is a free way to host your Beacon feed and posts. Here's a detailed
    ```
 
 4. **Commit and push:**
+
    ```bash
    git add docs/
    git commit -m "Add Beacon feed and posts"
@@ -274,11 +293,13 @@ This automatically rebuilds and publishes when you add new posts.
 #### Option 3: Using gh-pages Branch
 
 1. **Install gh-pages package:**
+
    ```bash
    npm install --save-dev gh-pages
    ```
 
 2. **Add publish script to package.json:**
+
    ```json
    "scripts": {
      "publish-feed": "npm run build-feed && gh-pages -d output"
@@ -286,6 +307,7 @@ This automatically rebuilds and publishes when you add new posts.
    ```
 
 3. **Publish:**
+
    ```bash
    npm run publish-feed
    ```
@@ -297,6 +319,7 @@ This automatically rebuilds and publishes when you add new posts.
 - **Custom domain:** Add a `CNAME` file to your docs/ directory
 - **Index page:** Create `docs/index.html` to link to your posts
 - **RSS autodiscovery:** Add this to your HTML head:
+
   ```html
   <link rel="alternate" type="application/rss+xml" title="My Feed" href="/feed.rss">
   ```
@@ -327,6 +350,7 @@ export const DEFAULT_CONFIG: BeaconConfig = {
 ```
 
 Replace `example.com` with your actual domain. This ensures:
+
 - RSS feed has correct URLs
 - Post links point to your site
 - Feed metadata is accurate
@@ -353,16 +377,19 @@ Result: Quick link share with commentary
 ### Example 2: Long-form Response
 
 1. Write your response in a text editor:
+
    ```bash
    vim ~/response.txt
    ```
 
 2. Run write command:
+
    ```bash
    npm run write
    ```
 
 3. Provide the file path:
+
    ```
    Title: My thoughts on RSS durability
    Content: /home/user/response.txt
@@ -404,6 +431,7 @@ Result: Original post without source reference
 ### Post not appearing in feed?
 
 Run the build command:
+
 ```bash
 npm run build-feed
 ```
@@ -411,11 +439,13 @@ npm run build-feed
 ### Want to preview HTML locally?
 
 Open in browser:
+
 ```bash
 open output/posts/2025-06-25-my-post.html
 ```
 
 Or use a simple HTTP server:
+
 ```bash
 npx http-server output/posts
 ```
@@ -440,7 +470,7 @@ Edit `src/generateHtml.ts` to customize the HTML template and styling.
 
 ### RSS Validation
 
-Validate your feed at: https://validator.w3.org/feed/
+Validate your feed at: <https://validator.w3.org/feed/>
 
 ---
 
