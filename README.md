@@ -61,6 +61,8 @@ This project is a foundational step toward building interoperable, decentralized
 - **Storage**: Local JSON files (no database)
 - **Output**: RSS 2.0 XML
 
+**New Dependencies Added:** None! Write mode uses only existing dependencies (chalk, dayjs) and built-in Node.js modules (fs, path, readline). New scripts added: `write` and `build-feed`.
+
 ---
 
 ### 🧪 Getting Started
@@ -159,6 +161,28 @@ worklight-beacon/
 5. **Share your feed** with others or host the HTML pages
 
 **For detailed instructions, see [USER_GUIDE.md](USER_GUIDE.md)**
+
+#### Quick: Hosting on GitHub Pages
+
+To publish your feed for free on GitHub Pages:
+
+1. **Copy outputs to docs directory:**
+   ```bash
+   mkdir -p docs
+   cp output/feed.rss docs/
+   cp -r output/posts docs/
+   ```
+
+2. **Update config** in `src/config.ts` with your GitHub Pages URL:
+   ```typescript
+   baseUrl: 'https://username.github.io/repo-name',
+   ```
+
+3. **Push and enable:** Commit, push, then enable GitHub Pages in Settings → Pages → Deploy from `/docs` folder
+
+4. **Your feed is live!** Share `https://username.github.io/repo-name/feed.rss` with RSS readers
+
+See [USER_GUIDE.md](USER_GUIDE.md#hosting-on-github-pages) for detailed GitHub Pages setup, automation options, and custom domains.
 
 ---
 

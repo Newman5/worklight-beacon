@@ -4,7 +4,24 @@
     <title>My Beacon Feed</title>
     <link>https://example.com/feed.rss</link>
     <description>Signal from The Beacon</description>
-    <lastBuildDate>Thu, 18 Dec 2025 17:57:48 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Dec 2025 18:08:42 GMT</lastBuildDate>
+    <item>
+      <title>Post Formatting Demo</title>
+      <link>https://example.com/posts/2025-12-18-formatting-demo.html</link>
+      <guid>https://example.com/posts/2025-12-18-formatting-demo.html</guid>
+      <pubDate>Thu, 18 Dec 2025 18:00:00 GMT</pubDate>
+      <description><![CDATA[This post demonstrates various formatting options.
+
+You can include &lt;strong&gt;bold text&lt;/strong&gt; and &lt;em&gt;italic text&lt;/em&gt;.
+
+Here&apos;s a link: &lt;a href=&quot;https://example.com/article&quot;&gt;Check out this article&lt;/a&gt;
+
+And here&apos;s an image:
+
+&lt;img src=&quot;https://via.placeholder.com/400x200/FFA500/FFFFFF?text=Beacon+Demo&quot; alt=&quot;Demo image&quot;&gt;
+
+You can also include plain URLs: https://github.com/Newman5/worklight-beacon]]></description>
+    </item>
     <item>
       <title>Hello World Beacon Post</title>
       <link>https://example.com/posts/2025-12-18-hello-world-beacon-post.html</link>

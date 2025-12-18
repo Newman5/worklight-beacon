@@ -24,9 +24,30 @@ function formatDate(isoDate: string): string {
   });
 }
 
+function processContent(content: string): string {
+  // Check if content contains HTML tags
+  const hasHtmlTags = /<[^>]+>/.test(content);
+  
+  if (hasHtmlTags) {
+    // Content has HTML - preserve it but still handle paragraph breaks
+    return content.split('\n\n').map(para => {
+      // Don't wrap if paragraph already starts with a block-level tag
+      if (para.trim().match(/^<(p|div|h[1-6]|ul|ol|blockquote|pre|img)/i)) {
+        return para;
+      }
+      return `<p>${para.replace(/\n/g, '<br>')}</p>`;
+    }).join('\n');
+  } else {
+    // Plain text - escape and format
+    return escapeHtml(content)
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+  }
+}
+
 function generateHtmlPage(post: Post): string {
   const date = formatDate(post.date);
-  const contentHtml = escapeHtml(post.content).replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+  const contentHtml = processContent(post.content);
 
   let sourceHtml = '';
   if (post.sourceUrl) {
@@ -69,6 +90,16 @@ function generateHtmlPage(post: Post): string {
     .content p {
       margin: 1em 0;
     }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      margin: 1em 0;
+      border-radius: 4px;
+    }
+    .content a {
+      color: #FFA500;
+      text-decoration: underline;
+    }
     .source {
       margin-top: 2em;
       padding: 1em;
@@ -98,7 +129,7 @@ function generateHtmlPage(post: Post): string {
       <time datetime="${post.date}">${date}</time>
     </div>
     <div class="content">
-      <p>${contentHtml}</p>
+      ${contentHtml}
     </div>
     ${sourceHtml}
   </article>

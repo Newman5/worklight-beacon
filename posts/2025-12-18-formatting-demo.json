@@ -1,0 +1,8 @@
+{
+  "id": "2025-12-18-formatting-demo",
+  "title": "Post Formatting Demo",
+  "date": "2025-12-18T18:00:00.000Z",
+  "content": "This post demonstrates various formatting options.\n\nYou can include <strong>bold text</strong> and <em>italic text</em>.\n\nHere's a link: <a href=\"https://example.com/article\">Check out this article</a>\n\nAnd here's an image:\n\n<img src=\"https://via.placeholder.com/400x200/FFA500/FFFFFF?text=Beacon+Demo\" alt=\"Demo image\">\n\nYou can also include plain URLs: https://github.com/Newman5/worklight-beacon",
+  "link": "https://example.com/posts/2025-12-18-formatting-demo.html",
+  "guid": "https://example.com/posts/2025-12-18-formatting-demo.html"
+}

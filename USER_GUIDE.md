@@ -37,6 +37,62 @@ Instead of typing content directly, you can write in your favorite editor:
 - No markdown required in the JSON (HTML generation handles formatting)
 - There's no length limit, but RSS readers typically work best with shorter posts
 
+#### Including Links in Content
+
+To include links in your post content, use plain URLs or simple markdown-style syntax:
+
+**Plain URLs:** Just paste the URL in your content:
+```
+Check out this article: https://example.com/article
+```
+
+**Markdown-style links:** Use `[text](url)` format in your content:
+```
+I found [this great article](https://example.com/article) about RSS.
+```
+
+Note: The HTML generator currently preserves these as plain text. If you need clickable links, you can:
+1. Edit the JSON file and use HTML `<a>` tags in the content field
+2. Manually edit the generated HTML in `output/posts/`
+
+**Example with inline link:**
+```json
+{
+  "content": "Check out <a href=\"https://example.com\">this article</a> for more."
+}
+```
+
+#### Including Images
+
+Images are not stored in posts directly. To include images:
+
+1. **Host images externally** (GitHub, Imgur, your server)
+2. **Reference in content** using HTML `<img>` tags:
+   ```json
+   {
+     "content": "Here's a screenshot:\n\n<img src=\"https://example.com/image.png\" alt=\"Description\">\n\nWhat do you think?"
+   }
+   ```
+
+3. The HTML generator will preserve the `<img>` tag
+4. RSS readers that support HTML will display the image
+
+**Important:** Always use `https://` URLs for images to ensure they work in RSS readers.
+
+#### Content Formatting
+
+The `content` field accepts:
+- **Plain text** - Safest, works everywhere
+- **HTML tags** - For links (`<a>`), images (`<img>`), emphasis (`<em>`, `<strong>`)
+- **Line breaks** - Use `\n` for single break, `\n\n` for paragraphs
+
+**Example with formatting:**
+```json
+{
+  "content": "This is <strong>important</strong> text.\n\nThis is a new paragraph with a <a href=\"https://example.com\">link</a>.\n\n<img src=\"https://example.com/pic.jpg\" alt=\"Photo\">"
+}
+```
+
 ### Linking to Sources
 
 When you reference another article or post:
@@ -118,6 +174,140 @@ These can be:
 - Committed to GitHub Pages
 - Shared directly
 - Viewed locally in any browser
+
+### Hosting on GitHub Pages
+
+GitHub Pages is a free way to host your Beacon feed and posts. Here's a detailed guide:
+
+#### Option 1: Using the docs/ Directory (Recommended)
+
+1. **Create a docs directory** in your repository root:
+   ```bash
+   mkdir docs
+   ```
+
+2. **Copy your outputs to docs:**
+   ```bash
+   cp output/feed.rss docs/
+   cp -r output/posts docs/
+   ```
+
+3. **Update your config** in `src/config.ts` to match your GitHub Pages URL:
+   ```typescript
+   export const DEFAULT_CONFIG: BeaconConfig = {
+     feed: {
+       title: 'My Beacon Feed',
+       link: 'https://username.github.io/repository-name/feed.rss',
+       description: 'Signal from The Beacon',
+     },
+     site: {
+       baseUrl: 'https://username.github.io/repository-name',
+     },
+   };
+   ```
+
+4. **Commit and push:**
+   ```bash
+   git add docs/
+   git commit -m "Add Beacon feed and posts"
+   git push
+   ```
+
+5. **Enable GitHub Pages:**
+   - Go to your repository on GitHub
+   - Click **Settings** → **Pages**
+   - Under "Source", select **Deploy from a branch**
+   - Choose **main** branch and **/docs** folder
+   - Click **Save**
+
+6. **Your feed will be live at:**
+   - Feed: `https://username.github.io/repository-name/feed.rss`
+   - Posts: `https://username.github.io/repository-name/posts/YYYY-MM-DD-slug.html`
+
+#### Option 2: Using GitHub Actions (Automated)
+
+Create `.github/workflows/publish.yml`:
+
+```yaml
+name: Publish Feed
+
+on:
+  push:
+    paths:
+      - 'posts/**'
+      - 'src/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build feed
+        run: npm run build-feed
+      
+      - name: Copy to docs
+        run: |
+          mkdir -p docs
+          cp output/feed.rss docs/
+          cp -r output/posts docs/
+      
+      - name: Commit and push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs/
+          git commit -m "Auto-update feed" || exit 0
+          git push
+```
+
+This automatically rebuilds and publishes when you add new posts.
+
+#### Option 3: Using gh-pages Branch
+
+1. **Install gh-pages package:**
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+2. **Add publish script to package.json:**
+   ```json
+   "scripts": {
+     "publish-feed": "npm run build-feed && gh-pages -d output"
+   }
+   ```
+
+3. **Publish:**
+   ```bash
+   npm run publish-feed
+   ```
+
+4. **Enable Pages** (choose gh-pages branch in Settings)
+
+#### Tips for GitHub Pages
+
+- **Custom domain:** Add a `CNAME` file to your docs/ directory
+- **Index page:** Create `docs/index.html` to link to your posts
+- **RSS autodiscovery:** Add this to your HTML head:
+  ```html
+  <link rel="alternate" type="application/rss+xml" title="My Feed" href="/feed.rss">
+  ```
+
+#### Workflow with GitHub Pages
+
+1. Write a post: `npm run write`
+2. Copy to docs: `cp output/feed.rss docs/ && cp -r output/posts docs/`
+3. Commit: `git add docs/ && git commit -m "New post"`
+4. Push: `git push`
+5. Live in ~1 minute!
 
 ### Customizing Feed Metadata
 
