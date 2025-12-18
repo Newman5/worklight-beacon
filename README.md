@@ -44,6 +44,7 @@ This project is a foundational step toward building interoperable, decentralized
 - ✅ Create new posts via CLI
 - ✅ Store posts as individual JSON files (`posts/`)
 - ✅ Generate RSS 2.0 feed from your posts (`output/feed.rss`)
+- ✅ Generate static HTML pages for each post (`output/posts/`)
 - ✅ Optional source URL linking (reference articles you're responding to)
 - ✅ File-based: no database, just files
 - ✅ Durable: posts are plain JSON, easy to version control
@@ -87,13 +88,15 @@ You'll be prompted for:
 - **Source URL** (optional): URL you're responding to or referencing
 - **Source Title** (optional): Title of the source
 
-The post will be saved to `posts/` and your RSS feed will be regenerated at `output/feed.rss`.
+The post will be saved to `posts/` and your RSS feed will be regenerated at `output/feed.rss`. HTML pages are also generated at `output/posts/`.
 
-#### Rebuild RSS Feed
-If you manually edit post files, regenerate the RSS feed:
+#### Rebuild RSS Feed and HTML
+If you manually edit post files, regenerate all outputs:
 ```bash
 npm run build-feed
 ```
+
+This will regenerate both the RSS feed and HTML pages.
 
 #### File Structure
 ```
@@ -103,8 +106,42 @@ worklight-beacon/
 │   ├── YYYY-MM-DD-slug.json
 │   └── ...
 └── output/
-    └── feed.rss          # Your generated RSS feed
+    ├── feed.rss          # Your generated RSS feed
+    └── posts/            # Generated HTML pages
+        ├── YYYY-MM-DD-slug.html
+        └── ...
 ```
+---
+
+### 📝 Example Workflow
+
+1. **Read feeds** to discover interesting content:
+   ```bash
+   npm start
+   ```
+
+2. **Find something worth responding to** in the terminal output
+
+3. **Write a post** referencing that content:
+   ```bash
+   npm run write
+   ```
+   
+   Example:
+   ```
+   Title: Thoughts on the RSS Revival
+   Content: I agree with the points made about RSS durability...
+   Source URL: https://example.com/rss-article
+   Source Title: The RSS Renaissance
+   ```
+
+4. **Your signal is emitted:**
+   - Post saved: `posts/2025-06-26-thoughts-on-the-rss-revival.json`
+   - RSS updated: `output/feed.rss`
+   - HTML created: `output/posts/2025-06-26-thoughts-on-the-rss-revival.html`
+
+5. **Share your feed** with others or host the HTML pages
+
 ---
 
 ### 🎯 Design Philosophy

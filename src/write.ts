@@ -1,5 +1,6 @@
 import { createPost, savePost } from './writePost';
 import { buildFeed } from './generateFeed';
+import { generateHtmlPages } from './generateHtml';
 import chalk from 'chalk';
 
 async function main() {
@@ -23,6 +24,9 @@ async function main() {
 
     // Rebuild RSS feed
     buildFeed();
+    
+    // Generate HTML page for the post
+    generateHtmlPages([post]);
     
     console.log(chalk.bold.hex('#FFA500')('\n🧡 Post published! Your signal is emitted.\n'));
   } catch (error) {
